@@ -1,0 +1,3 @@
+os: windows
+before_install:
+  - choco install julia
