@@ -1,9 +1,15 @@
-os: windows
-language: sh
 notifications:
   email: false
-before_install:
-  - choco install julia
-script:
-  - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
-  - julia --color=yes --project=. -e 'using Pkg; Pkg.test("TestWindows")'
+matrix:
+  include:
+    - os: windows
+      language: generic
+      before_install:
+        - choco install julia
+      script:
+        - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
+        - julia --color=yes --project=. -e 'using Pkg; Pkg.test()'
+    - os: linux
+      language: julia
+      julia:
+        - 1.0
