@@ -1,6 +1,10 @@
-authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
 name = "TestWindows"
 uuid = "3f60395c-f5f4-11e8-1b42-dfa305cb0e6f"
+authors = ["WooKyoung Noh <wookay.noh@gmail.com>"]
 version = "0.1.0"
 
-[deps]
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

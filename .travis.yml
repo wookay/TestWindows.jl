@@ -1,6 +1,9 @@
 os: windows
 language: sh
+notifications:
+  email: false
 before_install:
   - choco install julia
 script:
-  - julia -e 'using InteractiveUtils; versioninfo(verbose=true)'
+  - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
+  - julia --color=yes --project=. -e 'using Pkg; Pkg.test("TestWindows")'
