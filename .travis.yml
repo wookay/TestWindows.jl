@@ -2,3 +2,5 @@ os: windows
 language: sh
 before_install:
   - choco install julia
+script:
+  - julia -e 'using InteractiveUtils; versioninfo(verbose=true)'
