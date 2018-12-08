@@ -1,5 +1,6 @@
 using Test
+using TestWindows: greet
 
 @testset "test" begin
-    @test 3 == 1+2
+    @test greet() isa Nothing
 end

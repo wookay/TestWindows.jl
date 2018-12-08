@@ -1,7 +1,25 @@
+# Documentation: http://docs.travis-ci.com/user/languages/julia/
 notifications:
   email: false
+
+language: julia
+
+julia:
+  - 1.0
+  - nightly
+
 matrix:
+  exclude:
+    - os: osx
+      julia: nightly
+
+    - os: windows
+      julia: nightly
+      language: julia
+
   include:
+    - os: osx
+
     - os: windows
       language: sh
       before_install:
@@ -9,7 +27,9 @@ matrix:
       script:
         - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
         - julia --color=yes --project=. -e 'using Pkg; Pkg.test()'
-    - os: linux
-      language: julia
-      julia:
-        - 1.0
+
+after_success:
+  - if [[ "$TRAVIS_OS_NAME" == linux && "$TRAVIS_JULIA_VERSION" != nightly ]] ; then julia --project=. -e 'using Pkg;
+                                                                                                           Pkg.add("Coverage");
+                                                                                                           using Coverage;
+                                                                                                           Codecov.submit(process_folder())' ; fi
