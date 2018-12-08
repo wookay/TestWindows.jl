@@ -21,7 +21,7 @@ matrix:
     - os: osx
 
     - os: windows
-      language: bash
+      language: sh
       before_install:
         - choco install julia
       script:
