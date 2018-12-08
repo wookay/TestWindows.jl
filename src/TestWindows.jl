@@ -1,5 +1,5 @@
 module TestWindows
 
-greet() = print("Hello World!")
+greet() = println("Hello World!")
 
 end # module
