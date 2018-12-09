@@ -26,6 +26,7 @@ matrix:
         - choco install julia
       script:
         - julia --color=yes -e 'using InteractiveUtils; versioninfo(verbose=true)'
+        - julia --color=yes -e 'printstyled("hello\n", color=:green)'
         - julia --color=yes --project=. -e 'using Pkg; Pkg.test()'
 
 after_success:
